@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="showcase">
+	{% include "includes/message.html"%}
+
+	<div class="content">
+		<h1>Welcome</h1>
+<h3 class="dt">
+{{user.username}}
+</h3>
+<br>
+<h4 class="dte">
+{{time}}
+</h4>
+</div>
+</div>
+{% endblock %}
+
+
+
+

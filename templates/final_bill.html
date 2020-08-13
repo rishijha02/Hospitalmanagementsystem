@@ -1,0 +1,341 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if not c%}
+<div id="showcase">
+    <div class="content">
+
+<form method="POST" action="">
+<li><p class="text">Patient Id<span id="imp">*</span></p><input  type="number" name="id" class="input-area" required><a href="/view_patient" target="__blank" style="margin-left: 40px; border: 2px solid; color: black; padding: 10px;height: 40px; width: 100px;background-color: grey;text-decoration: none;">Get</a></li><br>
+<input type="submit" name="submit" class="btn">
+</form>
+
+</div>
+</div>
+{% endif %}
+{% if c and d and not k%}
+<center>
+	<h1>Patient Details</h1>
+                                <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >Name</th>
+                                    <th >Age</th>
+                                    <th >Address</th>
+                                    <th >Join date</th>
+                                    <th >Type of Room</th>
+                                    <th >Discharge date</th>
+                                    <th >No of days</th>
+								</tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                
+                                <tr>
+                                    <td >{{ c.id }}</td>
+                                
+                                    <td>{{ c.name}}</td>
+                                    <td>{{ c.age }}</td>
+                                    <td>{{ c.address }}</td>
+                                    <td>{{ c.doa }}</td>
+                                    <td>{{ c.bed }}</td>
+                                    <td>{{today}}</td>
+                                    <td>{{nday}}</td>
+                                </tr>
+                            
+                               
+                            </table>
+                          	<h4 class="dt">Bed charges:<span class="dte">{{bcharge}}</span></h4>
+                                
+
+<br>
+<br>
+<table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        <h2>Medicine Details</h2>
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >Medicine id</th>
+                                    <th >Medicine Name</th>
+                                    <th >Rate</th>
+                                    <th >Quantity</th>
+                                    <th >Amount</th>
+
+								</tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                {% for i in d%}
+                                {% for j in r%}
+                                {% if i.med_id|string()==j.med_id|string() %}
+                                <tr>
+                                    <td >{{ i.patient_id }}</td>
+	                                <td >{{ i.med_id }}</td>
+                                    <td >{{ j.med_name }}</td>
+                                    <td >{{ j.rate }}</td>
+                                    <td>{{i.qty_issued}}</td>
+                                    <td>{{i.qty_issued*j.rate}}</td>
+                                </tr>
+                            	{%endif%}
+                            	{% endfor%}
+
+                               {% endfor %}
+                                
+                            </table>
+                            <h4 class="dt">Medicine charges:<span class="dte">Rs. {{mcharge}}</span></h4>
+                            <h3>This patient has not undergone any Diagnosis</h3>
+                        </center>
+                        <h1 class="dt" style="margin-left: 200px;">Grand Total:<span class="dte">Rs.{{gt}}</span></h1>
+                        <button style="float: right;margin-right: 200px;" onclick="window.print()">Print</button>
+                                
+
+{%endif%}
+{% if c and k and not d%}
+<center>
+	<h1>Patient Details</h1>
+                                <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >Name</th>
+                                    <th >Age</th>
+                                    <th >Address</th>
+                                    <th >Join date</th>
+                                    <th >Type of Room</th>
+                                    <th >Discharge date</th>
+                                    <th >No of days</th>
+								</tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                
+                                <tr>
+                                    <td >{{ c.id }}</td>
+                                
+                                    <td>{{ c.name}}</td>
+                                    <td>{{ c.age }}</td>
+                                    <td>{{ c.address }}</td>
+                                    <td>{{ c.doa }}</td>
+                                    <td>{{ c.bed }}</td>
+                                    <td>{{today}}</td>
+                                    <td>{{nday}}</td>
+                                </tr>
+                            
+                               {{nday*10}}
+                                
+                            </table>
+                            <h4 class="dt">Bed charges:<span class="dte">Rs.{{bcharge}}</span></h4>
+
+<br>
+<br>
+
+                            <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        	<h2>Test Details</h2>
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >testiD</th>
+                                    <th >testname</th>
+                                    <th >testcharge</th>
+
+								</tr>
+                                
+                                
+                    			{% for i in k%}
+                    			{% for j in r2%}
+                                <!-- All Patient Details -->
+                                {% if i.test_id|string()==j.test_id|string() %}
+                                <tr>
+                                    <td >{{i.patient_id}}</td>
+                              		<td>{{i.test_id}}</td>
+                              		<td>{{j.test_name}}</td>
+                              		<td>{{j.charge}}</td>
+
+                                </tr>
+                                {% endif%}
+                                {%endfor%}
+                            {%endfor%}
+                               
+                                
+                            </table>
+                            <h4 class="dt">Diagnostic charges:<span class="dte">Rs.{{dcharge}}</span></h4>
+                            <h3>This patient has not taken any Medicine</h3>
+                           
+                            </center>
+                            <h1 class="dt" style="margin-left: 200px";>Grand Total:<span class="dte">Rs.{{gt}}</span></h1>  
+                            <button style="float: right;margin-right: 200px;" onclick="window.print()">Print</button> 
+                                
+{%endif%}
+{% if c and (not d and not k) %}
+<center>
+	<h1>Patient Details</h1>
+                                <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >Name</th>
+                                    <th >Age</th>
+                                    <th >Address</th>
+                                    <th >Join date</th>
+                                    <th >Type of Room</th>
+                                    <th >Discharge date</th>
+                                    <th >No of days</th>
+								</tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                
+                                <tr>
+                                    <td >{{ c.id }}</td>
+                                
+                                    <td>{{ c.name}}</td>
+                                    <td>{{ c.age }}</td>
+                                    <td>{{ c.address }}</td>
+                                    <td>{{ c.doa }}</td>
+                                    <td>{{ c.bed }}</td>
+                                    <td>{{today}}</td>
+                                    <td>{{nday}}</td>
+                                </tr>
+                            
+                               
+                                
+                            </table>
+                            <h4 class="dt">Bed charges:<span class="dte">Rs.{{bcharge}}</span></h4>
+
+                            <h3>This patient has not gone under any Diagnosis</h3>
+                            <h3>This patient has not taken any medicine</h3>
+                            
+                            </center>
+                            <h1 class="dt" style="margin-left: 200px;">Grand Total:<span class="dte">Rs.{{gt}}</span></h1> 
+                            <button style="float: right; margin-right: 200px;" onclick="window.print()">Print</button>
+                                
+
+{%endif%}
+{% if c and d and k%}
+<form name="getPatient" method="POST" action="add_diagnostics">
+                            <center>
+                            	<h1>Patient Details</h1>
+                                <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >Name</th>
+                                    <th >Age</th>
+                                    <th >Address</th>
+                                    <th >Join date</th>
+                                    <th >Type of Room</th>
+                                    <th >Discharge date</th>
+                                    <th >No of days</th>
+								</tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                
+                                <tr>
+                                    <td >{{ c.id }}</td>
+                                
+                                    <td>{{ c.name}}</td>
+                                    <td>{{ c.age }}</td>
+                                    <td>{{ c.address }}</td>
+                                    <td>{{ c.doa }}</td>
+                                    <td>{{ c.bed }}</td>
+                                    <td>{{today}}</td>
+                                    <td>{{nday}}</td>
+                                </tr>
+                            
+                              
+                                
+                            </table>
+                            <h5 class="dt">No of days:{{nday}}</h5>
+                            <h4 class="dt">Bed charges:<span class="dte">Rs.{{bcharge}}</span></h4>
+
+<br>
+<br>
+
+                            <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        	<h2>Test Details</h2>
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >testiD</th>
+                                    <th >testname</th>
+                                    <th >testcharge</th>
+
+								</tr>
+                                
+                                
+                    			{% for i in k%}
+                    			{% for j in r2%}
+                                <!-- All Patient Details -->
+                                {% if i.test_id|string()==j.test_id|string() %}
+                                <tr>
+                                    <td >{{i.patient_id}}</td>
+                              		<td>{{i.test_id}}</td>
+                              		<td>{{j.test_name}}</td>
+                              		<td>{{j.charge}}</td>
+
+                                </tr>
+                                {% endif%}
+                                {%endfor%}
+                            {%endfor%}
+                               
+                                
+                            </table>
+                            <h4 class="dt">Diagnostic charges:<span class="dte">Rs.{{dcharge}}</span></h4>
+<br>
+<br>
+
+      
+
+                            <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        <h2>Medicine Details</h2>
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    <th >Medicine id</th>
+                                    <th >Medicine Name</th>
+                                    <th >Rate</th>
+                                    <th >Quantity</th>
+                                    <th >Amount</th>
+
+								</tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                {% for i in d%}
+                                {% for j in r%}
+                                {% if i.med_id|string()==j.med_id|string() %}
+                                <tr>
+                                    <td >{{ i.patient_id }}</td>
+	                                <td >{{ i.med_id }}</td>
+                                    <td >{{ j.med_name }}</td>
+                                    <td >{{ j.rate }}</td>
+                                    <td>{{i.qty_issued}}</td>
+                                    <td>{{i.qty_issued*j.rate}}</td>
+                                </tr>
+                            	{%endif%}
+                            	{% endfor%}
+
+                               {% endfor %}
+                                
+                            </table>        
+                            <h4 class="dt">Medicine charges:<span class="dte">Rs. {{mcharge}}</span></h4>
+                            </center>  
+
+                           <h1 class="dt"style="margin-left: 200px;">Grand Total:<span class="dte">Rs.{{gt}}</span></h1> 
+                                
+                    </form>
+                    <button style="float: right; margin-right: 200px;" onclick="window.print()">Print</button>
+            {%endif%}        
+
+{% endblock %}

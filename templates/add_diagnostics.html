@@ -1,0 +1,50 @@
+{% extends "layout.html"%}
+{% block content%}
+
+{% if not test%}
+<div id="showcase">
+	<div class="content">
+<h6>Choose the Diagnosis from below...</h6>
+<form method="POST" action="">
+<li><p class="text">Enter test name<span id="imp">*</span></p><select type="text" name="name" class="input-area" required>
+	
+{% for t in tst%}
+        	<option>{{t.test_name}}</option>
+        	{% endfor %}
+
+
+</select></li><br>
+<input type="submit" name="Edit" class="btn">
+</form>
+
+</div>
+</div>
+{% endif%}
+{% if test %}
+<div id="showcase">
+	<div class="content">
+		<h2 class="dt">Here are the Test  Details...</h2>
+<form action="" method="POST">
+	<h2 class="dt">Testname: <span class="dte">{{test.test_name}}</span></h2>
+	<h2 class="dt">Test Charge:<span class="dte">Rs.{{test.charge}}</span></h2>
+	<br>
+	<label for="testid" style="font-size: 2.2rem; font-weight: bold;">Test id : </label>
+		<input class="input-area"  name="t_id" value="{{test.test_id}}" readonly="">
+		<br>
+		<br>
+	<label for="patientid" style="font-size: 2.2rem; font-weight: bold;">Patient Id : </label>
+		<select name="id" class="input-area">
+        	{% for p in patient%}
+        	<option>{{p.id}}</option>
+        	{% endfor %}
+        	</select>
+<br>
+<br>
+<input type="submit" name="" class="btn">
+
+</form>
+</div>
+</div>
+{%endif%}
+{%endblock%}
+

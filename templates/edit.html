@@ -1,0 +1,32 @@
+{% extends "layout.html"%}
+{% block content%}
+
+<div id="showcase">
+	{% include "includes/message.html"%}
+	<div class="content">
+		<h2>Here are the  Patient Details...</h2>
+		<form action="/edit/{{patient.id}}" method="POST">
+			<ul>
+			<li><p class="text">Patient Id<span id="imp">*</span></p><input  type="number" name="id" class="input-area" value="{{patient.id}}" readonly>
+			<li><p class="text">Patient Name<span id="imp">*</span></p><input  type="text" name="patient_name" class="input-area" value="{{patient.name}}" ></li><br>
+			<li><p class="text">Patient Age<span id="imp">*</span></p><input  type="number" name="patient_age" class="input-area" value="{{patient.age}}" ></li><br>
+			<li><p class="text">Date of Admission<span id="imp">*</span></p><input  type="datetime" name="Date" class="input-area" value="{{patient.doa}}" ></li><br>
+			<li><p class="text">Type Of Bed<span id="imp">*</span></p> <select value="{{patient.bed}}" id="types" name="types">
+				<option>General ward</option>
+				<option>Semi sharing</option>
+				<option>Single room</option>
+			</select></li><br>
+
+			<li><p class="text">Address<span id="imp">*</span></p><input  type="text" name="address" class="input-area" value="{{patient.address}}" ></li><br>
+			<li><p class="text">State<span id="imp">*</span></p><input  type="text" name="state" class="input-area" value="{{patient.state}}" ></li><br>
+			<li><p class="text">City<span id="imp">*</span></p><input  type="text" name="city" class="input-area" value="{{patient.city}}" ></li><br>
+			<li><p class="text">Phone<span id="imp">*</span></p><input  type="tel" name="phn" class="input-area" value="{{patient.phn}}" ></li><br>
+			<li><p class="text">Email Id<span id="imp">*</span></p><input  type="email" name="email" class="input-area" value="{{patient.email}}"></li><br>
+			
+		</ul>
+		<input type="submit" name="submit" class="btn">
+			
+		</form>
+	</div>
+</div>
+{% endblock %}

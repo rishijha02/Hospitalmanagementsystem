@@ -1,0 +1,222 @@
+*
+{
+	padding: 0;
+	margin: 0;
+}
+body
+{
+	font-family: 'Source Sans Pro', sans-serif;
+	line-height: 1.8;
+}
+/*Header*/
+#header
+{
+	width: 100%;
+	text-align: center;
+	border-bottom: 5px solid orange;
+	height: 20vh;
+	background-color: darkgrey;
+	color: white;
+	padding-top: 25px;
+	font-size: 1.6rem;
+}
+#header span
+{
+	color: orange;
+	font-size:2.2rem;
+	font-family: arial; 
+}
+.menu-bar ul
+{
+	display: inline-flex;
+	list-style: none;
+	color: white;
+
+
+}
+.menu-bar ul li
+{
+	margin: 10px 40px;
+	width: 150px;
+	
+	border-radius: 5px;
+
+}
+.menu-bar ul li:hover
+{
+	background-color: #ffcccb;
+
+
+}
+.sub-menu
+{
+	display: none;
+}
+.sub-menu li a
+{
+	text-decoration: none;
+	color: black;
+	font-size: 1rem;
+}
+.menu-bar ul li:hover .sub-menu
+{
+	display: block;
+	position: absolute;
+	background-color: #ffcccb;
+	margin-top: 0;
+	cursor: pointer;
+	z-index: 1;
+}
+.menu-bar ul li:hover .sub-menu ul
+{
+	display: block;
+	margin: 5px;
+
+
+}
+.menu-bar ul li:hover .sub-menu ul li
+{
+	width: 100px;
+	padding: 5px;
+	border-bottom: 1px dotted red;
+	background: transparent;
+	border-radius: 0;
+	text-align: left;
+}
+.menu-bar ul li:hover .sub-menu ul li:last-child
+{
+	border-bottom: none;
+}
+.sub-menu ul li a:hover
+{
+	color: orange;
+	font-size: 1.2rem;
+}
+/*patient registration or create patient*/
+#showcase
+{
+background-image: url('../img/hosp.jpeg');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+min-height: 120vh;
+background-attachment: fixed;
+
+	
+}
+.content
+{
+	position: absolute;
+	top: 40%;
+	left: 26%;
+	width: 600px;
+	border: 1px solid black;
+	text-align: center;
+	list-style: none;
+	
+	padding: 30px;
+}
+#types
+{
+	padding: 10px;
+}
+#imp
+{
+	color: red;
+}
+
+#showcase li
+{
+	font-weight: bold;
+	margin: 10px;
+	display: inline-flex;
+	padding: 10px;
+}
+.btn
+{
+	margin: 20px;
+	padding: 10px;
+	font-size: 1.2rem;
+	background-color: darkgrey;
+	width: 100px;
+	border-radius: 5px;
+	border:none;
+}
+.btn:hover
+{
+	background-color: orange;
+	color: white;
+	font-size: 1.5rem;
+}
+.input-area
+{
+	border:1px solid black;
+}
+/*Table for view.html*/
+.view
+{
+	width: 800px;
+	transform: translate(-15%,-15%);
+}
+.view h2
+{
+	font-size: 2rem;
+}
+#table 
+{
+	margin: 50px 80px;
+	font-size: 1.2rem;
+}
+.content th,td
+{
+	
+	padding: 10px;
+	
+}
+table, th, td
+{
+	border:2px solid black;
+	border-collapse: collapse;
+}
+#pharmacy,#issue,#Medicine
+{
+	margin-left: 230px;
+	padding: 40px;
+	border:1px solid grey;
+	width: 800px;
+	text-align: center;
+}
+#table-med
+{
+	margin-left: 240px;
+
+}
+#showcase .btn 
+{
+margin:50px 200px;
+}
+#showcase .Grand
+{
+	margin-left: 550px;
+}
+.dt
+{
+	font-size: 3rem;
+	color: green;
+}
+.dte
+{
+	font-size: 2.5rem;
+	color: blue;
+}
+.bt
+{
+	display: flex;
+	flex-direction: row;
+}
+#log
+{
+	text-decoration: none;
+	color: white;
+	font-size: 1.5rem;
+}

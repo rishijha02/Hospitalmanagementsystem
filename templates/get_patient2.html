@@ -1,0 +1,142 @@
+ {% extends "layout.html" %}
+    {% block content %}
+    {% if not c%}
+<div id="showcase">
+    <div class="content">
+<h6>Enter patient id to see diagnoctics status of patient...</h6>
+<form method="POST" action="">
+<li><p class="text">Patient Id<span id="imp">*</span></p><input  type="number" name="id" class="input-area" required><a href="/view_patient" target="__blank" style="margin-left: 40px; border: 2px solid; color: black; padding: 10px;height: 40px; width: 100px;background-color: grey;text-decoration: none;">Get</a></li><br>
+<input type="submit" name="submit" class="btn">
+</form>
+
+</div>
+</div>
+{%endif %}
+        {% if c and not d %}
+        <center><h2>Patient with No test conducted</h2></center>
+                        <form name="getPatient" method="POST" action="add_diagnostics">
+                            <center>
+                                <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                        
+                        
+                                <tr>
+                                    <th >Patient ID</th>
+                                    
+                                    <th >Name</th>
+                                    <th >Age</th>
+                                    <th >Address</th>
+                                    <th >DOJ</th>
+                                    <th >Type of Room</th>
+
+                                    
+                                </tr>
+                                
+                                
+                    
+                                <!-- All Patient Details -->
+                                
+                                <tr>
+                                    <td >{{ c.id }}</td>
+                                
+                                    <td>{{ c.name}}</td>
+                                    <td>{{ c.age }}</td>
+                                    <td>{{ c.address }}</td>
+                                    <td>{{ c.doa }}</td>
+                                    <td>{{ c.bed }}</td>
+                                </tr>
+                            
+                                
+                                
+                            </table>        
+                            <center><a href="/add_diagnostics" class="btn">add</a><input class="btn" type="reset" value="Reset"></center>   
+                            </center>     
+                    </form>
+                    
+                
+            
+                
+        {% endif %}
+        {% if c and d %}
+                <center><h2>Patient Status</h2>
+                <form name="getPatient2" method="POST" action="add_diagnostics">
+                    <center>
+                    <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                
+                
+                        <tr>
+                            <th >Patient ID</th>
+                           
+                            <th >Name</th>
+                            <th >Age</th>
+                            <th >Address</th>
+                            <th >DOJ</th>
+                            <th >Type of Room</th>
+                            
+                        </tr>
+                        
+                        
+            
+                        <!-- All Patient Details -->
+                        
+                        <tr>
+                            <td >{{ c.id }}</td>
+                            
+                            <td>{{ c.name}}</td>
+                            <td>{{ c.age }}</td>
+                            <td>{{ c.address }}</td>
+                            <td>{{ c.doa }}</td>
+                            <td>{{ c.bed }}</td>
+                                            
+                        </tr>
+                    
+                        
+                        
+                    </table>
+        
+
+                    <br>
+                    <br>
+                   
+                    <center><h2>Test Conducted</h2></center>
+                    <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                
+                
+                        <table border='5' width='1000px' cellpadding='2' cellspacing='2' align='center'>
+                
+                
+                        <tr>
+                            <th >Name of test</th>
+                            <th>Amount</th>
+                            
+                        </tr>
+                        
+                        
+            
+                        <!-- All Patient Details -->
+                       
+                        
+                        {% for j in r %}
+                        <tr>
+                            <td >{{ j.test_name }}</td>
+                            
+                            <td>{{ j.charge }}</td>          
+                        </tr>
+                        
+                        
+                        
+                           
+                        {% endfor %}                    
+                    </table>
+                    <br>
+                    <br>
+                    <br>  
+                    
+                    <center><a href="/add_diagnostics" class="btn">add</a><input class="btn" type="reset" value="Reset"></center>
+                        
+                </center>
+                </form>
+            
+           
+        {% endif %}
+    
+{% endblock %}

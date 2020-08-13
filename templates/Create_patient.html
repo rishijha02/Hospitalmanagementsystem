@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--showcase-->
+<div id="showcase">
+	{% include "includes/message.html"%}
+	<div class="content">
+		<h2>Patient Registration</h2>
+		<form method="POST" action="/create_patient">
+			<ul>
+			
+			
+			<li><p class="text">Patient Name<span id="imp">*</span></p><input type="text" name="patient_name" class="input-area" required></li><br>
+			<li><p class="text">Patient Age<span id="imp">*</span></p><input type="number" name="patient_age" class="input-area" required></li><br>
+			<li><p class="text">Date of Admission<span id="imp">*</span></p><input type="date" name="Date" class="input-area" required></li><br>
+			<li><p class="text">Type Of Bed<span id="imp">*</span></p> <select id="types" name="types">
+				<option>General ward</option>
+				<option>Semi sharing</option>
+				<option>Single room</option>
+			</select></li><br>
+
+			<li><p class="text">Address<span id="imp">*</span></p><input type="text" name="add" class="input-area" required></li><br>
+			<li><p class="text">State<span id="imp">*</span></p><input type="text" name="state" class="input-area" required></li><br>
+			<li><p class="text">City<span id="imp">*</span></p><input type="text" name="city" class="input-area" required></li><br>
+			<li><p class="text">Phone<span id="imp">*</span></p><input type="tel" name="num" class="input-area" required></li><br>
+			<li><p class="text">Email<span id="imp">*</span></p><input type="email" name="email" class="input-area" required></li><br>
+			<li><span id="imp">*Mandatory</span></li><br>
+		</ul>
+			<li class="bt">
+			<input type="submit" name="Submit" class="btn">
+			<input type="reset" name="reset" class="btn">
+		</li>
+		</form>
+	</div>
+
+</div>
+{% endblock %}

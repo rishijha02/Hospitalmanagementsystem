@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--showcase-->
+{% if not patient%}
+<div id="showcase">
+	{% include "includes/message.html"%}
+	<div class="content">
+
+<form method="POST" action="">
+<li><p class="text">Patient Id<span id="imp">*</span></p><input  type="number" name="id" class="input-area" required><a href="/view_patient" target="__blank" style="margin-left: 40px; border: 2px solid; color: black; padding: 10px;height: 40px; width: 100px;background-color: grey;text-decoration: none;">Get</a></li><br>
+<input type="submit" name="submit" class="btn">
+</form>
+
+</div>
+</div>
+{%endif%}
+{% if patient %}
+<div id="showcase">
+	{% include "includes/message.html"%}
+	<div class="content">
+		<h2>Delete Patient</h2>
+		<form action="" method="POST">
+			<ul>
+			<li><p class="text">Patient Id<span id="imp">*</span></p><input  type="number" name="id" class="input-area" value="{{patient.id}}" readonly>
+			<li><p class="text">Patient Name<span id="imp">*</span></p><input  type="text" name="patient_name" class="input-area" value="{{patient.name}}" readonly></li><br>
+			<li><p class="text">Patient Age<span id="imp">*</span></p><input  type="number" name="patient_age" class="input-area" value="{{patient.age}}" readonly></li><br>
+			<li><p class="text">Date of Admission<span id="imp">*</span></p><input  type="datetime" name="Date" class="input-area" value="{{patient.doa}}" readonly></li><br>
+			<li><p class="text">Type Of Bed<span id="imp">*</span></p> <input type="text" value="{{patient.bed}}" readonly></li><br>
+
+			<li><p class="text">Address<span id="imp">*</span></p><input  type="text" name="patientid" class="input-area" value="{{patient.address}}" readonly></li><br>
+			<li><p class="text">State<span id="imp">*</span></p><input  type="text" name="state" class="input-area" value="{{patient.state}}" readonly></li><br>
+			<li><p class="text">City<span id="imp">*</span></p><input  type="text" name="city" class="input-area" value="{{patient.city}}" readonly></li><br>
+			<li><p class="text">Phone<span id="imp">*</span></p><input  type="text" name="city" class="input-area" value="{{patient.phn}}" readonly></li><br>
+			<li><p class="text">Email Id<span id="imp">*</span></p><input  type="text" name="city" class="input-area" value="{{patient.email}}" readonly></li><br>
+		</ul>
+			<button  class="btn">Delete</button>
+		</form>
+	</div>
+</div>
+{% endif %}
+{% endblock %}

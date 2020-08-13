@@ -1,0 +1,11 @@
+{
+	"params":
+	{
+		"local_server":"True",
+		"local_uri":"mysql+pymysql://root:@localhost/Hospital",
+		"prod_uri":"mysql+pymysql://root:@localhost/Hospital",
+		"userid":"rishijha",
+		"password":"12345"
+
+	}
+}

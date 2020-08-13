@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+    {% if not k %}
+    {% include "includes/message.html"%}
+    <h2><center>Issue Medicine</center></h2>
+    <center><form name="reg" action="" method="POST">
+        
+        Medicine Name(*):<input type="text" name="name" required><br><br>
+       
+        
+        <input type="submit" value="Check Availability" class="btn" >
+        <input type="reset" value="Reset" class="btn">
+    </form></center>
+    {% endif %}
+    {% if k %}
+    {% include "includes/message.html"%}
+    <center><form name="reg2" action="" method="POST">
+        
+        Quantity(*):<input type="text" name="qty" required><br><br>
+        <input type="hidden" name="h1" value="{{ k.med_id }}" required>
+       
+        patient id(*):<select name="id">
+        	{% for patient in patients%}
+        	<option>{{patient.id}}</option>
+        	{% endfor %}
+        	</select>
+        	
+        <input class="btn" type="submit" value="Issue" >
+        <input class="btn" type="reset" value="Reset">
+    </form></center>
+    {% endif %}
+    
+
+
+{% endblock %}
+
